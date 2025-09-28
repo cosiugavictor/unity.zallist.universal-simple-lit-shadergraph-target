@@ -65,7 +65,7 @@ PackedVaryings vert(Attributes input)
     return packedOutput;
 }
 
-FragmentOutput frag(PackedVaryings packedInput)
+GBufferOutput frag(PackedVaryings packedInput)
 {
     Varyings unpacked = UnpackVaryings(packedInput);
     UNITY_SETUP_INSTANCE_ID(unpacked);
@@ -132,7 +132,7 @@ FragmentOutput frag(PackedVaryings packedInput)
     MixRealtimeAndBakedGI(mainLight, inputData.normalWS, inputData.bakedGI, inputData.shadowMask);
     half4 color = half4(inputData.bakedGI * surface.albedo + surface.emission, surface.alpha);
 
-    FragmentOutput output = SurfaceDataToGBuffer(surface, inputData, color.rgb, kLightingSimpleLit);
+    GBufferOutput output = SurfaceDataToGBuffer(surface, inputData, color.rgb, kLightingSimpleLit);
 
 #ifdef _WRITE_RENDERING_LAYERS
     output.GBUFFER3.a = (float)GetMeshRenderingLayer();
