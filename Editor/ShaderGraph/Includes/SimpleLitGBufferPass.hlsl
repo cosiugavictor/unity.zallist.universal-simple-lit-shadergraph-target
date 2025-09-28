@@ -132,5 +132,11 @@ FragmentOutput frag(PackedVaryings packedInput)
     MixRealtimeAndBakedGI(mainLight, inputData.normalWS, inputData.bakedGI, inputData.shadowMask);
     half4 color = half4(inputData.bakedGI * surface.albedo + surface.emission, surface.alpha);
 
-    return SurfaceDataToGBuffer(surface, inputData, color.rgb, kLightingSimpleLit);
+    FragmentOutput output = SurfaceDataToGBuffer(surface, inputData, color.rgb, kLightingSimpleLit);
+
+#ifdef _WRITE_RENDERING_LAYERS
+    output.GBUFFER3.a = (float)GetMeshRenderingLayer();
+#endif
+
+    return output;
 }
