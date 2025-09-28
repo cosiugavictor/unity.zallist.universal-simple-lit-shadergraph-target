@@ -961,47 +961,28 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
         { kSimpleLitGBufferPass, IncludeLocation.Postgraph },
     };
 
-            public static readonly IncludeCollection GBuffer = new IncludeCollection
-            {
-                // Pre-graph
-#if UNITY_2022_2_15_OR_NEWER
-                { CoreIncludes.DOTSPregraph },
-                { CoreIncludes.WriteRenderLayersPregraph },
-#endif
-                { CoreIncludes.CorePregraph },
-                { kShadows, IncludeLocation.Pregraph },
-                { CoreIncludes.ShaderGraphPregraph },
-                { CoreIncludes.DBufferPregraph },
-
-                // Post-graph
-                { CoreIncludes.CorePostgraph },
-                { kGBuffer, IncludeLocation.Postgraph },
-                //{ kPBRGBufferPass, IncludeLocation.Postgraph },
-                { kSimpleLitGBufferPass, IncludeLocation.Postgraph },
-            };
-
             public static readonly IncludeCollection Meta = new IncludeCollection
-            {
-                // Pre-graph
-                { CoreIncludes.CorePregraph },
-                { CoreIncludes.ShaderGraphPregraph },
-                { kMetaInput, IncludeLocation.Pregraph },
+    {
+        // Pre-graph
+        { CoreIncludes.CorePregraph },
+        { CoreIncludes.ShaderGraphPregraph },
+        { kMetaInput, IncludeLocation.Pregraph },
 
-                // Post-graph
-                { CoreIncludes.CorePostgraph },
-                { kLightingMetaPass, IncludeLocation.Postgraph },
-            };
+        // Post-graph
+        { CoreIncludes.CorePostgraph },
+        { kLightingMetaPass, IncludeLocation.Postgraph },
+    };
 
             public static readonly IncludeCollection _2D = new IncludeCollection
-            {
-                // Pre-graph
-                { CoreIncludes.CorePregraph },
-                { CoreIncludes.ShaderGraphPregraph },
+    {
+        // Pre-graph
+        { CoreIncludes.CorePregraph },
+        { CoreIncludes.ShaderGraphPregraph },
 
-                // Post-graph
-                { CoreIncludes.CorePostgraph },
-                { k2DPass, IncludeLocation.Postgraph },
-            };
+        // Post-graph
+        { CoreIncludes.CorePostgraph },
+        { k2DPass, IncludeLocation.Postgraph },
+    };
         }
         #endregion
     }
